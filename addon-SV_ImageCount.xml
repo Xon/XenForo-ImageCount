@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<addon addon_id="SV_ImageCount" title="User-group Image Count Limit" version_string="1.0.0" version_id="1000000" url="" install_callback_class="" install_callback_method="" uninstall_callback_class="" uninstall_callback_method="">
+<addon addon_id="SV_ImageCount" title="Image Count Limit by User Group" version_string="1.0.0" version_id="1000000" url="" install_callback_class="" install_callback_method="" uninstall_callback_class="" uninstall_callback_method="">
   <admin_navigation/>
   <admin_permissions/>
   <admin_style_properties/>
@@ -14,8 +14,16 @@
   <email_templates/>
   <email_template_modifications/>
   <optiongroups/>
-  <permissions/>
-  <phrases/>
+  <permissions>
+    <permission_groups/>
+    <permissions>
+      <permission permission_group_id="forum" permission_id="sv_MaxImageCount" permission_type="integer" default_value_int="0" interface_group_id="forumPermissions" display_order="2120"/>
+    </permissions>
+    <interface_groups/>
+  </permissions>
+  <phrases>
+    <phrase title="permission_forum_sv_MaxImageCount" version_id="1000000" version_string="1.0.0"><![CDATA[Max Images]]></phrase>
+  </phrases>
   <route_prefixes/>
   <style_properties/>
   <templates/>
