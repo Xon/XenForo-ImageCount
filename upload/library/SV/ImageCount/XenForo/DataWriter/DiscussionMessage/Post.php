@@ -2,20 +2,26 @@
 
 class SV_ImageCount_XenForo_DataWriter_DiscussionMessage_Post extends XFCP_SV_ImageCount_XenForo_DataWriter_DiscussionMessage_Post
 {
-    public function setExtraData($name, $value)
+    protected function _checkMessageValidity()
     {
-        if ($name == self::DATA_FORUM)
+        if ($this->getOption(self::OPTION_MAX_IMAGES))
         {
-            $MaxImageCount = $this->_getForumModel()->getMaxImageCount($value);
-            if ($MaxImageCount)
+            $forum = $this->_getForumInfo();
+            if ($forum && isset($forum['node_id']))
             {
-                 $this->setOption(self::OPTION_MAX_IMAGES, $MaxImageCount);
+                $MaxImageCount = $this->_getForumModel()->getMaxImageCount($forum);
+                if ($MaxImageCount)
+                {
+                     if ($MaxImageCount < 0)
+                     {
+                         $MaxImageCount = 0;
+                     }
+                     $this->setOption(self::OPTION_MAX_IMAGES, $MaxImageCount);
+                }
             }
         }
-
-        return setExtraData($name, $value);
+        parent::_checkMessageValidity();
     }
-
 
     protected function _getForumModel()
     {
