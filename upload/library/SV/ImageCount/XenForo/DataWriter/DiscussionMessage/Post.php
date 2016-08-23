@@ -12,11 +12,11 @@ class SV_ImageCount_XenForo_DataWriter_DiscussionMessage_Post extends XFCP_SV_Im
                 $MaxImageCount = $this->_getForumModel()->getMaxImageCount($forum);
                 if ($MaxImageCount)
                 {
-                     if ($MaxImageCount < 0)
-                     {
-                         $MaxImageCount = 0;
-                     }
-                     $this->setOption(self::OPTION_MAX_IMAGES, $MaxImageCount);
+                    if ($MaxImageCount < 0)
+                    {
+                        $MaxImageCount = 0;
+                    }
+                    $this->setOption(self::OPTION_MAX_IMAGES, $MaxImageCount);
                 }
             }
         }
