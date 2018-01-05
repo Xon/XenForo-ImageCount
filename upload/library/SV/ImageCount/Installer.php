@@ -6,27 +6,30 @@ class SV_ImageCount_Installer
     {
         $version = isset($existingAddOn['version_id']) ? $existingAddOn['version_id'] : 0;
         $db = XenForo_Application::getDb();
-
     }
 
     public static function uninstall()
     {
         $db = XenForo_Application::getDb();
 
-        $db->query("
+        $db->query(
+            "
             DELETE FROM xf_permission_entry
-            WHERE permission_id in (
+            WHERE permission_id IN (
                 'sv_MaxImageCount'
             )
-        ");
+        "
+        );
 
-        $db->query("
+        $db->query(
+            "
             DELETE FROM xf_permission_content_entry
-            WHERE permission_id in (
+            WHERE permission_id IN (
                 'sv_MaxImageCount'
             )
-        ");
+        "
+        );
 
-        XenForo_Application::defer('Permission', array(), 'Permission', true);
+        XenForo_Application::defer('Permission', [], 'Permission', true);
     }
 }

@@ -23,8 +23,12 @@ class SV_ImageCount_XenForo_DataWriter_DiscussionMessage_Post extends XFCP_SV_Im
         parent::_checkMessageValidity();
     }
 
+    /**
+     * @return XenForo_Model|XenForo_Model_Forum|SV_ImageCount_XenForo_Model_Forum
+     */
     protected function _getForumModel()
     {
         return $this->getModelFromCache('XenForo_Model_Forum');
     }
 }
+

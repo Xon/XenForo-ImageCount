@@ -7,7 +7,9 @@ class SV_ImageCount_XenForo_DataWriter_ConversationMessage extends XFCP_SV_Image
         if ($this->getOption(self::OPTION_MAX_IMAGES))
         {
             $conversation = $this->getMergedData();
-            $MaxImageCount = $this->_getConversationModel()->getMaxImageCount($conversation);
+            /** @var SV_ImageCount_XenForo_Model_Conversation $conversationModel */
+            $conversationModel = $this->_getConversationModel();
+            $MaxImageCount = $conversationModel->getMaxImageCount($conversation);
             if ($MaxImageCount)
             {
                 if ($MaxImageCount < 0)
@@ -20,3 +22,4 @@ class SV_ImageCount_XenForo_DataWriter_ConversationMessage extends XFCP_SV_Image
         parent::_checkMessageValidity();
     }
 }
+
